@@ -9,9 +9,6 @@ triple = lambda x: 3 * x
 increment = lambda x: x + 1
 
 
-HW_SOURCE_FILE = __file__
-
-
 def product(n, term):
     """Return the product of the first n terms in a sequence.
 
@@ -32,6 +29,13 @@ def product(n, term):
     162
     """
     "*** YOUR CODE HERE ***"
+    i, Ans = 1, 1
+    while i <= n:
+        Ans, i = Ans * term(i), i+1
+    return Ans
+
+
+product(3, identity), product(5, identity), product(5, square), product(3, increment),product(3, triple)
 
 
 def accumulate(merger, start, n, term):
