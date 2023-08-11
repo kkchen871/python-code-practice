@@ -63,6 +63,13 @@ def accumulate(merger, start, n, term):
     16
     """
     "*** YOUR CODE HERE ***"
+    i = 1
+    Ans = start
+    while i<=n :
+        Ans = merger(Ans, term(i))
+        i =  i + 1
+    return Ans
+accumulate(add, 0, 5, identity), accumulate(add, 11, 5, identity), accumulate(add, 11, 0, identity), accumulate(add, 11, 3, square), accumulate(mul, 2, 3, square), accumulate(lambda x, y: x + y + 1, 2, 3, square), accumulate(lambda x, y: 2 * x * y, 2, 3, square), accumulate(lambda x, y: (x + y) % 17, 19, 20, square)
 
 
 def summation_using_accumulate(n, term):
@@ -80,7 +87,8 @@ def summation_using_accumulate(n, term):
     ['Expr', 'Return']
     """
     "*** YOUR CODE HERE ***"
-
+    return(accumulate(add, 0, n, term))
+summation_using_accumulate(5, square), summation_using_accumulate(5, triple)
 
 def product_using_accumulate(n, term):
     """Returns the product: term(1) * ... * term(n), using accumulate.
@@ -97,3 +105,5 @@ def product_using_accumulate(n, term):
     ['Expr', 'Return']
     """
     "*** YOUR CODE HERE ***"
+    return (accumulate(mul, 1, n, term))
+product_using_accumulate(4, square), product_using_accumulate(6, triple)
