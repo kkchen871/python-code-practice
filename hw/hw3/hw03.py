@@ -61,7 +61,26 @@ def pingpong(n):
     True
     """
     "*** YOUR CODE HERE ***"
-
+    def n_with_8(k):
+        if k % 10 == 8:
+            return 1
+        elif k < 10:
+            return 0
+        else:
+            return n_with_8( k // 10 )
+        
+    def change(n):
+        if n==1:
+            return 1
+        elif n%8==0 or n_with_8(n):
+            return -change(n-1)
+        else:
+            return change(n-1)
+        
+    if n==1:
+        return 1
+    else:
+        return pingpong(n-1) + change(n-1)
 
 def next_larger_coin(coin):
     """Returns the next larger coin in order.
